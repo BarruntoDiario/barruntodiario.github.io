@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Barrunto</title>
+  <meta name="description" content="Barrunto: un juego diario de palabras. Contesta definiciones y usa sus colores para adivinar la palabra oculta.">
+  <link rel="icon" href="icons/barrunto-logo.svg" type="image/svg+xml">
+  <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1B2333">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Barrunto">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@700;800&family=Alegreya+Sans:wght@400;500;700;800&display=swap">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <img class="mark" src="icons/barrunto-logo.svg" alt="" width="40" height="40">
+      <div class="brand"><h1>Barrunto</h1><span class="sub">Definiciones contra la palabra oculta</span></div>
+      <button class="icon-btn" id="btn-stats" type="button" aria-label="Estadísticas" title="Estadísticas">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 20V11M12 20V4M19 20v-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
+      </button>
+      <div class="num" id="num-box" hidden>nº<b id="num"></b></div>
+    </header>
+
+    <details class="help" id="help">
+      <summary>Cómo se juega</summary>
+      <ol>
+        <li>Hay una palabra oculta de 5 letras y tienes 6 filas.</li>
+        <li>En cada fila eliges una definición y escribes su respuesta. Si aciertas, la respuesta se compara con la palabra oculta:
+          <span class="legend" style="background:var(--ok)"></span> letra en su sitio,
+          <span class="legend" style="background:var(--near)"></span> está en otro sitio,
+          <span class="legend" style="background:var(--off)"></span> no está.</li>
+        <li>Si fallas la definición, pierdes la fila y esa definición, sin colores.</li>
+        <li>Cuando quieras, usa una fila para resolver. La palabra oculta no tiene definición: solo los colores te llevan a ella. La última fila siempre es para resolver.</li>
+        <li>Las tildes no cuentan, pero la Ñ es una letra distinta de la N.</li>
+      </ol>
+    </details>
+
+    <main id="main">
+      <p class="loading">Cargando la partida…</p>
+    </main>
+  </div>
+  <div class="kb" id="kb" aria-label="Teclado" hidden></div>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <dialog id="stats" aria-labelledby="stats-title">
+    <form method="dialog" class="dlg-close"><button aria-label="Cerrar">✕</button></form>
+    <h2 id="stats-title">Estadísticas</h2>
+    <div class="stat-grid" id="stat-grid"></div>
+    <h3>Filas usadas al ganar</h3>
+    <div class="dist" id="dist"></div>
+  </dialog>
+
+  <script src="js/logica.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

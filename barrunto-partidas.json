@@ -1,0 +1,316 @@
+{
+  "juego": "Barrunto",
+  "version": 1,
+  "partidas": [
+    {
+      "numero": 1,
+      "fecha": "2026-10-23",
+      "palabra": "PERLA",
+      "definiciones": [
+        {
+          "pista": "Balcón con asientos en un teatro",
+          "respuesta": "PALCO"
+        },
+        {
+          "pista": "Intestino, en lenguaje coloquial",
+          "respuesta": "TRIPA"
+        },
+        {
+          "pista": "Primate de Madagascar de cola larga y anillada",
+          "respuesta": "LÉMUR"
+        },
+        {
+          "pista": "Recipiente llano en que se sirve la comida",
+          "respuesta": "PLATO"
+        },
+        {
+          "pista": "Fiesta popular con casetas y atracciones",
+          "respuesta": "FERIA"
+        },
+        {
+          "pista": "Barrita de grafito para escribir o dibujar",
+          "respuesta": "LÁPIZ"
+        }
+      ]
+    },
+    {
+      "numero": 2,
+      "fecha": "2026-10-24",
+      "palabra": "MUSGO",
+      "definiciones": [
+        {
+          "pista": "Fruta tropical de pulpa anaranjada",
+          "respuesta": "MANGO"
+        },
+        {
+          "pista": "Pieza dura del esqueleto",
+          "respuesta": "HUESO"
+        },
+        {
+          "pista": "Comida cocinada en salsa a fuego lento",
+          "respuesta": "GUISO"
+        },
+        {
+          "pista": "Insecto volador que zumba en verano",
+          "respuesta": "MOSCA"
+        },
+        {
+          "pista": "Título nobiliario superior al de marqués",
+          "respuesta": "DUQUE"
+        },
+        {
+          "pista": "Superficie que pisamos",
+          "respuesta": "SUELO"
+        }
+      ]
+    },
+    {
+      "numero": 3,
+      "fecha": "2026-10-25",
+      "palabra": "CIRCO",
+      "definiciones": [
+        {
+          "pista": "Bóveda azul sobre nuestras cabezas",
+          "respuesta": "CIELO"
+        },
+        {
+          "pista": "Automóvil",
+          "respuesta": "COCHE"
+        },
+        {
+          "pista": "Escozor que da ganas de rascarse",
+          "respuesta": "PICOR"
+        },
+        {
+          "pista": "Roedor pequeño al que persigue el gato",
+          "respuesta": "RATÓN"
+        },
+        {
+          "pista": "Gran felino asiático de piel rayada",
+          "respuesta": "TIGRE"
+        },
+        {
+          "pista": "Flor de la que procede la flor de lis",
+          "respuesta": "LIRIO"
+        }
+      ]
+    },
+    {
+      "numero": 4,
+      "fecha": "2026-10-26",
+      "palabra": "TRIGO",
+      "definiciones": [
+        {
+          "pista": "Pieza del ajedrez que se mueve en línea recta",
+          "respuesta": "TORRE"
+        },
+        {
+          "pista": "Llave por la que sale el agua del lavabo",
+          "respuesta": "GRIFO"
+        },
+        {
+          "pista": "Estación de la caída de la hoja",
+          "respuesta": "OTOÑO"
+        },
+        {
+          "pista": "Unidad de volumen: mil mililitros",
+          "respuesta": "LITRO"
+        },
+        {
+          "pista": "Persona con quien se tiene amistad",
+          "respuesta": "AMIGO"
+        },
+        {
+          "pista": "Hueso de la pierna, por delante del peroné",
+          "respuesta": "TIBIA"
+        }
+      ]
+    },
+    {
+      "numero": 5,
+      "fecha": "2026-10-27",
+      "palabra": "BOLSA",
+      "definiciones": [
+        {
+          "pista": "Árbol conífero que se adorna en Navidad",
+          "respuesta": "ABETO"
+        },
+        {
+          "pista": "Asno",
+          "respuesta": "BURRO"
+        },
+        {
+          "pista": "Árbol de ribera de ramas colgantes, el llorón",
+          "respuesta": "SAUCE"
+        },
+        {
+          "pista": "Bolsa de goma que se infla con aire",
+          "respuesta": "GLOBO"
+        },
+        {
+          "pista": "Pieza de metal que se clava a martillazos",
+          "respuesta": "CLAVO"
+        },
+        {
+          "pista": "Atrevido, que no se arredra",
+          "respuesta": "OSADO"
+        }
+      ]
+    },
+    {
+      "numero": 6,
+      "fecha": "2026-10-28",
+      "palabra": "LLAVE",
+      "definiciones": [
+        {
+          "pista": "Pelo corto y suave del cuerpo",
+          "respuesta": "VELLO"
+        },
+        {
+          "pista": "Agua helada que cae en copos",
+          "respuesta": "NIEVE"
+        },
+        {
+          "pista": "Cara interior de la mano",
+          "respuesta": "PALMA"
+        },
+        {
+          "pista": "Líquido blanco que da la vaca",
+          "respuesta": "LECHE"
+        },
+        {
+          "pista": "Cereal de los copos del desayuno",
+          "respuesta": "AVENA"
+        },
+        {
+          "pista": "Primer día de la semana",
+          "respuesta": "LUNES"
+        }
+      ]
+    },
+    {
+      "numero": 7,
+      "fecha": "2026-10-29",
+      "palabra": "FUEGO",
+      "definiciones": [
+        {
+          "pista": "Lo que da la planta después de la flor",
+          "respuesta": "FRUTO"
+        },
+        {
+          "pista": "Lo que pone la gallina",
+          "respuesta": "HUEVO"
+        },
+        {
+          "pista": "Prenda redonda para cubrir la cabeza",
+          "respuesta": "GORRO"
+        },
+        {
+          "pista": "Animal salvaje y feroz",
+          "respuesta": "FIERA"
+        },
+        {
+          "pista": "Sitio o espacio",
+          "respuesta": "LUGAR"
+        },
+        {
+          "pista": "Persona de talento extraordinario",
+          "respuesta": "GENIO"
+        }
+      ]
+    },
+    {
+      "numero": 8,
+      "fecha": "2026-10-30",
+      "palabra": "PLUMA",
+      "definiciones": [
+        {
+          "pista": "Insecto saltarín que vive en el pelo de los perros",
+          "respuesta": "PULGA"
+        },
+        {
+          "pista": "Cítrico amarillo y ácido",
+          "respuesta": "LIMÓN"
+        },
+        {
+          "pista": "Libro para guardar fotos o cromos",
+          "respuesta": "ÁLBUM"
+        },
+        {
+          "pista": "Hoja en la que se escribe",
+          "respuesta": "PAPEL"
+        },
+        {
+          "pista": "Pintura hecha sobre una pared",
+          "respuesta": "MURAL"
+        },
+        {
+          "pista": "Camélido de los Andes",
+          "respuesta": "LLAMA"
+        }
+      ]
+    },
+    {
+      "numero": 9,
+      "fecha": "2026-10-31",
+      "palabra": "CANTO",
+      "definiciones": [
+        {
+          "pista": "Baile argentino de abrazo cerrado",
+          "respuesta": "TANGO"
+        },
+        {
+          "pista": "Serpiente venenosa que se yergue ante el encantador",
+          "respuesta": "COBRA"
+        },
+        {
+          "pista": "Elevación del terreno, menor que una montaña",
+          "respuesta": "MONTE"
+        },
+        {
+          "pista": "Mensaje escrito que se envía por correo",
+          "respuesta": "CARTA"
+        },
+        {
+          "pista": "Persona que interpreta un papel",
+          "respuesta": "ACTOR"
+        },
+        {
+          "pista": "Personaje diminuto del cuento de Blancanieves",
+          "respuesta": "ENANO"
+        }
+      ]
+    },
+    {
+      "numero": 10,
+      "fecha": "2026-11-01",
+      "palabra": "NOCHE",
+      "definiciones": [
+        {
+          "pista": "Cama, en lenguaje literario",
+          "respuesta": "LECHO"
+        },
+        {
+          "pista": "Arma de cuero para lanzar piedras",
+          "respuesta": "HONDA"
+        },
+        {
+          "pista": "Tomar la última comida del día",
+          "respuesta": "CENAR"
+        },
+        {
+          "pista": "Parte del cuerpo entre el cuello y el vientre",
+          "respuesta": "PECHO"
+        },
+        {
+          "pista": "Hijo de un hijo o de una hija",
+          "respuesta": "NIETO"
+        },
+        {
+          "pista": "Lo contrario de estrecho",
+          "respuesta": "ANCHO"
+        }
+      ]
+    }
+  ]
+}

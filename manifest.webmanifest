@@ -1,0 +1,16 @@
+{
+  "name": "Barrunto",
+  "short_name": "Barrunto",
+  "description": "Un juego diario de palabras: contesta definiciones y usa sus colores para adivinar la palabra oculta.",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#1B2333",
+  "theme_color": "#1B2333",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
