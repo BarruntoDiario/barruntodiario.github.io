@@ -23,6 +23,19 @@ test("normalización: sin tildes, Ñ propia", () => {
   assert.notEqual(L.normalizar("OTOÑO"), "OTONO");
 });
 
+test("escribir y borrar en la casilla elegida", () => {
+  let r = L.escribirEnCasilla(["", "", "", "", ""], 2, "R");
+  assert.deepEqual(r, { casillas: ["", "", "R", "", ""], pos: 3 });
+  r = L.escribirEnCasilla(["", "", "R", "C", "O"], 4, "O");
+  assert.equal(r.pos, 0); // vuelve al primer hueco
+  r = L.escribirEnCasilla(["C", "I", "R", "C", "O"], 1, "A");
+  assert.deepEqual(r, { casillas: ["C", "A", "R", "C", "O"], pos: 2 }); // sobrescribe
+  assert.equal(L.escribirEnCasilla(["C", "I", "R", "C", ""], 4, "O").pos, 4);
+  assert.deepEqual(L.borrarEnCasilla(["C", "I", "R", "", ""], 1), { casillas: ["C", "", "R", "", ""], pos: 1 });
+  assert.deepEqual(L.borrarEnCasilla(["C", "I", "R", "", ""], 3), { casillas: ["C", "I", "", "", ""], pos: 2 });
+  assert.deepEqual(L.borrarEnCasilla(["", "", "", "", ""], 0), { casillas: ["", "", "", "", ""], pos: 0 });
+});
+
 test("elección de partida por fecha local", () => {
   const ps = [{ numero: 1, fecha: "2026-10-23" }, { numero: 2, fecha: "2026-10-24" }];
   assert.equal(L.elegirPartida(ps, "2026-10-24").partida.numero, 2);

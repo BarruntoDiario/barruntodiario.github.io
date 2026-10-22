@@ -26,6 +26,23 @@
     return r;
   }
 
+  // Fila en curso como 5 casillas ("" si está vacía) y la casilla elegida.
+  // Al escribir se salta al siguiente hueco, o al primero si no quedan más a la derecha.
+  function escribirEnCasilla(casillas, pos, ch) {
+    const c = [...casillas];
+    c[pos] = ch;
+    let sig = c.findIndex((x, i) => i > pos && !x);
+    if (sig < 0) sig = c.findIndex(x => !x);
+    return { casillas: c, pos: sig < 0 ? Math.min(pos + 1, LETRAS - 1) : sig };
+  }
+  // Borrar vacía la casilla elegida; si ya estaba vacía, retrocede y vacía la anterior.
+  function borrarEnCasilla(casillas, pos) {
+    const c = [...casillas];
+    if (!c[pos] && pos > 0) pos--;
+    c[pos] = "";
+    return { casillas: c, pos };
+  }
+
   // Fechas como AAAA-MM-DD en hora local.
   function fechaLocal(d) {
     d = d || new Date();
@@ -88,7 +105,7 @@
   }
 
   const api = {
-    FILAS, LETRAS, normalizar, puntuar, fechaLocal, desplazarFecha, elegirPartida,
+    FILAS, LETRAS, normalizar, puntuar, escribirEnCasilla, borrarEnCasilla, fechaLocal, desplazarFecha, elegirPartida,
     textoCompartir, estadisticasVacias, registrarResultado, rachaVigente,
   };
   if (typeof module !== "undefined" && module.exports) module.exports = api;

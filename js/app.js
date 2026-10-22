@@ -17,7 +17,7 @@
   let P = null;          // partida en juego, con respuestas normalizadas
   let S = null;          // estado guardado: { palabra, filas, estado, contada }
   let sel = null;        // índice de definición, "solve" o null
-  let buf = "";
+  let buf = [], pos = 0; // casillas de la fila en curso y casilla elegida
   let filaRevelar = -1, filaSacudir = -1;
 
   // ---------- almacenamiento ----------
@@ -58,7 +58,7 @@
     $("num").textContent = P.numero;
     $("num-box").hidden = false;
     document.title = "Barrunto nº " + P.numero;
-    sel = null; buf = "";
+    sel = null; vaciar();
     autoSeleccionar();
     render();
     window.scrollTo(0, 0);
@@ -90,6 +90,7 @@
   // ---------- estado ----------
   const filasRestantes = () => FILAS - S.filas.length;
   function autoSeleccionar() { if (S.estado === "playing" && filasRestantes() === 1) sel = "solve"; }
+  function vaciar() { buf = Array(LETRAS).fill(""); pos = 0; }
   function filaDeDef(i) { return S.filas.find(f => f.tipo === "def" && f.def === i); }
 
   // Las teclas solo se colorean con las definiciones acertadas.
@@ -125,7 +126,7 @@
   function renderFila(i) {
     const f = S.filas[i];
     const row = el("div", "row"), tiles = el("div", "tiles"), cap = el("div", "cap");
-    let letras = "", clases = Array(LETRAS).fill("");
+    let letras = "", clases = Array(LETRAS).fill(""), activa = false;
     if (f) {
       letras = f.palabra;
       if (f.puntos) clases = f.puntos;
@@ -141,6 +142,7 @@
     } else if (i === S.filas.length && S.estado === "playing") {
       row.classList.add("active");
       letras = buf;
+      activa = true;
       cap.classList.add("lead");
       if (sel === "solve") cap.textContent = "Resolver: escribe la palabra oculta";
       else if (sel != null) { cap.textContent = P.defs[sel].pista; cap.title = P.defs[sel].pista; }
@@ -149,6 +151,11 @@
     for (let k = 0; k < LETRAS; k++) {
       const t = el("div", "tile" + (clases[k] ? " " + clases[k] : "") + (letras[k] && !clases[k] ? " filled" : ""), letras[k] || "");
       if (i === filaRevelar && clases[k] && clases[k] !== "void") { t.classList.add("flip"); t.style.animationDelay = k * 90 + "ms"; }
+      if (activa) {
+        // Se puede tocar cualquier casilla para escribir en ella.
+        if (sel != null && k === pos) t.classList.add("cursor");
+        t.addEventListener("click", () => { pos = k; render(); });
+      }
       tiles.appendChild(t);
     }
     row.append(tiles, cap);
@@ -172,13 +179,13 @@
       else if (quedan === 1) { b.disabled = true; st.textContent = "—"; }
       else st.textContent = ROMANOS[i];
       if (sel === i) { b.classList.add("sel"); b.setAttribute("aria-pressed", "true"); }
-      b.addEventListener("click", () => { sel = i; buf = ""; render(); });
+      b.addEventListener("click", () => { sel = i; vaciar(); render(); });
       lista.appendChild(b);
     });
     const r = el("button", "def solve" + (sel === "solve" ? " sel" : ""));
     r.type = "button";
     r.append(el("span", "txt", "Resolver la palabra oculta"), el("span", "st", quedan === 1 ? "Última fila" : ""));
-    r.addEventListener("click", () => { sel = "solve"; buf = ""; render(); });
+    r.addEventListener("click", () => { sel = "solve"; vaciar(); render(); });
     lista.appendChild(r);
     wrap.appendChild(lista);
     return wrap;
@@ -261,31 +268,39 @@
   function escribirLetra(ch) {
     if (!S || S.estado !== "playing") return;
     if (sel == null) { toast("Primero elige una definición"); sacudirActiva(); return; }
-    if (buf.length < LETRAS) { buf += ch; render(); }
+    ({ casillas: buf, pos } = L.escribirEnCasilla(buf, pos, ch));
+    render();
   }
   function borrar() {
-    if (!S || S.estado !== "playing" || !buf.length) return;
-    buf = buf.slice(0, -1); render();
+    if (!S || S.estado !== "playing" || buf.every(c => !c)) return;
+    ({ casillas: buf, pos } = L.borrarEnCasilla(buf, pos));
+    render();
+  }
+  function moverCursor(d) {
+    if (!S || S.estado !== "playing") return;
+    pos = Math.max(0, Math.min(LETRAS - 1, pos + d));
+    render();
   }
   function enviar() {
     if (!S || S.estado !== "playing") return;
     if (sel == null) { toast("Primero elige una definición"); sacudirActiva(); return; }
-    if (buf.length < LETRAS) { toast("Faltan letras"); sacudirActiva(); return; }
+    if (buf.some(c => !c)) { toast("Faltan letras"); sacudirActiva(); return; }
+    const palabra = buf.join("");
     const idx = S.filas.length;
     let ok;
     if (sel === "solve") {
-      ok = buf === P.oculta;
-      S.filas.push({ tipo: "resolver", palabra: buf, ok });
+      ok = palabra === P.oculta;
+      S.filas.push({ tipo: "resolver", palabra, ok });
       if (ok) S.estado = "won"; else toast("No es la palabra oculta");
     } else {
-      ok = buf === P.defs[sel].clave;
-      S.filas.push(ok ? { tipo: "def", def: sel, palabra: buf, ok, puntos: L.puntuar(buf, P.oculta) }
-                      : { tipo: "def", def: sel, palabra: buf, ok });
+      ok = palabra === P.defs[sel].clave;
+      S.filas.push(ok ? { tipo: "def", def: sel, palabra, ok, puntos: L.puntuar(palabra, P.oculta) }
+                      : { tipo: "def", def: sel, palabra, ok });
       if (!ok) toast("No es la respuesta: pierdes la fila");
     }
     if (S.estado === "playing" && filasRestantes() === 0) S.estado = "lost";
     if (ok) filaRevelar = idx; else filaSacudir = idx;
-    sel = null; buf = "";
+    sel = null; vaciar();
     autoSeleccionar();
     if (S.estado !== "playing" && !S.contada) {
       escribir(CLAVE_ESTADISTICAS, L.registrarResultado(leer(CLAVE_ESTADISTICAS), P.fecha, S.estado === "won", S.filas.length));
@@ -304,6 +319,10 @@
       if (e.target.closest && e.target.closest("button,summary")) return;
       e.preventDefault(); enviar();
     } else if (e.key === "Backspace") { e.preventDefault(); borrar(); }
+    else if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+      if (e.target.closest && e.target.closest("button,summary")) return;
+      e.preventDefault(); moverCursor(e.key === "ArrowLeft" ? -1 : 1);
+    }
     else if (/^[a-zñáéíóúü]$/i.test(e.key)) escribirLetra(L.normalizar(e.key));
   }
 
