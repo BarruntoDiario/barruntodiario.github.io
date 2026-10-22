@@ -1,6 +1,6 @@
 /* Barrunto: service worker. Red primero para las partidas; caché primero para todo lo demás.
    Al cambiar HTML, CSS, JS o iconos, sube VERSION para que los jugadores reciban la nueva versión. */
-const VERSION = "barrunto-v2";
+const VERSION = "barrunto-v4";
 const PARTIDAS = "barrunto-partidas.json";
 const NUCLEO = [
   "./",

@@ -6,6 +6,8 @@
   const ROMANOS = ["I", "II", "III", "IV", "V", "VI"];
   const CLAVE_ESTADISTICAS = "barrunto-estadisticas";
   const CLAVE_AYUDA = "barrunto-ayuda-vista";
+  const CLAVE_RACHA = "barrunto-racha";   // { "AAAA-MM-DD": 1 } con los días jugados en su día
+  const CLAVE_TEMA = "barrunto-tema";
   const $ = id => document.getElementById(id);
 
   // ?fecha=AAAA-MM-DD fuerza otro día (útil para probar partidas futuras).
@@ -28,8 +30,17 @@
 
   // ---------- arranque ----------
   async function iniciar() {
-    if (!leer(CLAVE_AYUDA)) { $("help").open = true; escribir(CLAVE_AYUDA, true); }
-    $("btn-stats").addEventListener("click", abrirEstadisticas);
+    $("btn-cal").addEventListener("click", () => abrirCalendario());
+    $("btn-ayuda").addEventListener("click", abrirReglas);
+    $("racha").addEventListener("click", toastRacha);
+    $("tab-cal").addEventListener("click", () => pestana("cal"));
+    $("tab-est").addEventListener("click", () => pestana("est"));
+    $("cal-prev").addEventListener("click", () => moverMes(-1));
+    $("cal-next").addEventListener("click", () => moverMes(1));
+    $("cal-grid").addEventListener("click", tocarDia);
+    const oscuro = $("modo-oscuro");
+    oscuro.checked = document.documentElement.getAttribute("data-theme") === "dark";
+    oscuro.addEventListener("change", () => cambiarTema(oscuro.checked));
     document.addEventListener("keydown", teclaFisica);
     setInterval(tic, 1000);
 
@@ -39,13 +50,30 @@
       PARTIDAS = (await res.json()).partidas || [];
     } catch (e) {
       aviso("No se han podido cargar las partidas", "Comprueba la conexión y vuelve a intentarlo.");
+      listo = true; quizaQuitarPortada();
       return;
     }
 
+    renderRacha();
     const eleccion = L.elegirPartida(PARTIDAS, HOY);
     if (eleccion.tipo === "hoy") jugar(eleccion.partida);
     else sinPartida(eleccion);
+    listo = true; quizaQuitarPortada();
   }
+
+  // ---------- portada ----------
+  // Se queda 2 segundos (menos si se toca) y se va cuando el juego está listo; luego, la primera vez, las instrucciones.
+  const portada = $("portada");
+  const T0 = performance.now(), DURA = matchMedia("(prefers-reduced-motion: reduce)").matches ? 1000 : 2000;
+  let listo = false, tocada = false;
+  function quizaQuitarPortada() {
+    if (!listo || !(tocada || performance.now() - T0 >= DURA) || portada.classList.contains("fuera")) return;
+    portada.classList.add("fuera");
+    setTimeout(() => portada.remove(), 500);
+    if (!leer(CLAVE_AYUDA)) { escribir(CLAVE_AYUDA, true); abrirReglas(); }
+  }
+  portada.addEventListener("click", () => { tocada = true; quizaQuitarPortada(); });
+  setTimeout(quizaQuitarPortada, DURA);
 
   function jugar(partida) {
     P = {
@@ -55,8 +83,7 @@
     };
     S = leer(claveEstado());
     if (!S || S.palabra !== P.oculta || !Array.isArray(S.filas)) S = { palabra: P.oculta, filas: [], estado: "playing", contada: false };
-    $("num").textContent = P.numero;
-    $("num-box").hidden = false;
+    $("sub").textContent = `Nº ${P.numero} · ${fechaBonita(P.fecha)}`;
     document.title = "Barrunto nº " + P.numero;
     sel = null; vaciar();
     autoSeleccionar();
@@ -117,10 +144,24 @@
     for (let i = 0; i < FILAS; i++) tablero.appendChild(renderFila(i));
     const panel = el("section");
     panel.appendChild(S.estado === "playing" ? renderDefiniciones() : renderFinal());
-    $("main").replaceChildren(tablero, panel);
+    $("main").replaceChildren(...(P.fecha !== HOY ? [renderOtroDia()] : []), tablero, panel);
     if (filaSacudir > -1) tablero.children[filaSacudir].classList.add("shake");
     filaRevelar = filaSacudir = -1;
     renderTeclado();
+  }
+
+  // Aviso cuando se juega una partida de un día anterior, con el atajo para volver a la de hoy.
+  function renderOtroDia() {
+    const caja = el("div", "otro-dia");
+    caja.appendChild(el("p", null, `Partida del ${fechaBonita(P.fecha)}: no cuenta para la racha ni las estadísticas.`));
+    const deHoy = PARTIDAS.find(p => p.fecha === HOY);
+    if (deHoy) {
+      const b = el("button", "btn ghost", "Volver a hoy");
+      b.type = "button";
+      b.addEventListener("click", () => jugar(deHoy));
+      caja.appendChild(b);
+    }
+    return caja;
   }
 
   function renderFila(i) {
@@ -221,7 +262,7 @@
     const copiar = el("button", "btn", "Copiar resultado");
     copiar.addEventListener("click", () => compartir(copiar, c));
     const stats = el("button", "btn ghost", "Estadísticas");
-    stats.addEventListener("click", abrirEstadisticas);
+    stats.addEventListener("click", () => abrirCalendario("est"));
     acc.append(copiar, stats);
     c.appendChild(acc);
 
@@ -302,10 +343,15 @@
     if (ok) filaRevelar = idx; else filaSacudir = idx;
     sel = null; vaciar();
     autoSeleccionar();
-    if (S.estado !== "playing" && !S.contada) {
-      escribir(CLAVE_ESTADISTICAS, L.registrarResultado(leer(CLAVE_ESTADISTICAS), P.fecha, S.estado === "won", S.filas.length));
-      S.contada = true;
-      setTimeout(abrirEstadisticas, ok ? 1300 : 900);
+    // Solo la partida de su día cuenta para la racha (desde la primera fila) y las estadísticas.
+    if (P.fecha === HOY) {
+      const jugados = leer(CLAVE_RACHA) || {};
+      if (!jugados[HOY]) { jugados[HOY] = 1; escribir(CLAVE_RACHA, jugados); renderRacha(); }
+      if (S.estado !== "playing" && !S.contada) {
+        escribir(CLAVE_ESTADISTICAS, L.registrarResultado(leer(CLAVE_ESTADISTICAS), P.fecha, S.estado === "won", S.filas.length));
+        S.contada = true;
+        setTimeout(() => abrirCalendario("est"), ok ? 1300 : 900);
+      }
     }
     guardar();
     render();
@@ -351,11 +397,90 @@
     toast("Selecciona y copia el texto");
   }
 
+  // ---------- racha ----------
+  const fechasPartidas = () => PARTIDAS.map(p => p.fecha);
+  function renderRacha() {
+    const jugados = leer(CLAVE_RACHA) || {}, r = L.rachaDias(jugados, fechasPartidas(), HOY), hoy = !!jugados[HOY];
+    const b = $("racha");
+    $("racha-n").textContent = r;
+    b.className = "racha" + (hoy ? " hoy" : r ? " pendiente" : "");
+    b.setAttribute("aria-label", `Racha: ${r} ${r === 1 ? "día seguido" : "días seguidos"}` + (hoy || !r ? "" : ". Juega hoy para mantenerla"));
+  }
+  function toastRacha() {
+    const jugados = leer(CLAVE_RACHA) || {}, fechas = fechasPartidas();
+    const r = L.rachaDias(jugados, fechas, HOY), m = L.mejorRachaDias(jugados, fechas, HOY), hoy = !!jugados[HOY];
+    toast(r ? `Racha: ${r} ${r === 1 ? "día" : "días"} · Mejor: ${m}` + (hoy ? "" : " · ¡Juega hoy para mantenerla!")
+            : m ? `Sin racha ahora · Mejor: ${m} ${m === 1 ? "día" : "días"}`
+                : "Juega la partida de hoy para empezar una racha");
+  }
+
+  // ---------- tema: claro por defecto, modo oscuro a elección (se recuerda en este navegador) ----------
+  function cambiarTema(oscuro) {
+    document.documentElement.setAttribute("data-theme", oscuro ? "dark" : "light");
+    $("theme-color").setAttribute("content", oscuro ? "#11151D" : "#F2F4F7");
+    try { oscuro ? localStorage.setItem(CLAVE_TEMA, "oscuro") : localStorage.removeItem(CLAVE_TEMA); } catch (e) {}
+  }
+
+  // ---------- ventanas ----------
+  function abrirVentana(d) { if (!d.open) { if (d.showModal) d.showModal(); else d.setAttribute("open", ""); } }
+  function abrirReglas() { abrirVentana($("reglas")); }
+
+  // ---------- calendario: un mes cada vez, de lunes a domingo; se abren las partidas hasta hoy ----------
+  let calMes; // { y, m } del mes a la vista
+  function abrirCalendario(cual) {
+    const [y, m] = (P ? P.fecha : HOY).split("-").map(Number);
+    calMes = { y, m: m - 1 };
+    pestana(cual || "cal");
+    abrirVentana($("calendario"));
+  }
+  function pestana(cual) {
+    ["cal", "est"].forEach(p => { $("tab-" + p).setAttribute("aria-selected", p === cual); $("panel-" + p).hidden = p !== cual; });
+    if (cual === "est") renderEst(); else renderCal();
+  }
+  function moverMes(k) { const d = new Date(calMes.y, calMes.m + k, 1); calMes = { y: d.getFullYear(), m: d.getMonth() }; renderCal(); }
+  function estadoPartida(p) {
+    const s = leer("barrunto-partida-" + p.numero);
+    if (!s || s.palabra !== L.normalizar(p.palabra) || !Array.isArray(s.filas) || !s.filas.length) return "";
+    return s.estado === "won" ? "ganada" : s.estado === "lost" ? "perdida" : "empezada";
+  }
+  function renderCal() {
+    const { y, m } = calMes, primero = new Date(y, m, 1), diasMes = new Date(y, m + 1, 0).getDate();
+    const mes = y * 12 + m, fechas = fechasPartidas().filter(f => f <= HOY).sort();
+    const aMes = f => { const [a, b] = f.split("-").map(Number); return a * 12 + b - 1; };
+    $("cal-titulo").textContent = primero.toLocaleDateString("es-ES", { month: "long", year: "numeric" });
+    $("cal-prev").disabled = !fechas.length || mes <= aMes(fechas[0]);
+    $("cal-next").disabled = mes >= aMes(HOY);
+    const nombreMes = primero.toLocaleDateString("es-ES", { month: "long" });
+    const celdas = [];
+    for (let k = (primero.getDay() + 6) % 7; k > 0; k--) celdas.push(el("span", "cal-dia vacio"));
+    for (let n = 1; n <= diasMes; n++) {
+      const fecha = L.fechaLocal(new Date(y, m, n)), p = fecha <= HOY && PARTIDAS.find(x => x.fecha === fecha);
+      const b = el("button", "cal-dia", n);
+      b.type = "button";
+      if (!p) { b.disabled = true; celdas.push(b); continue; }
+      const e = estadoPartida(p);
+      if (e) b.classList.add(e);
+      if (fecha === HOY) b.classList.add("hoy");
+      if (P && fecha === P.fecha) { b.classList.add("actual"); b.setAttribute("aria-current", "date"); }
+      b.dataset.fecha = fecha;
+      b.setAttribute("aria-label", `${n} de ${nombreMes}, nº ${p.numero}` + (fecha === HOY ? ", hoy" : "") + (e ? ", " + e : ""));
+      celdas.push(b);
+    }
+    $("cal-grid").replaceChildren(...celdas);
+  }
+  function tocarDia(e) {
+    const b = e.target.closest("[data-fecha]");
+    if (!b) return;
+    const p = PARTIDAS.find(x => x.fecha === b.dataset.fecha);
+    $("calendario").close();
+    if (p && (!P || p.numero !== P.numero)) jugar(p);
+  }
+
   // ---------- estadísticas ----------
-  function abrirEstadisticas() {
+  function renderEst() {
     const est = Object.assign(L.estadisticasVacias(), leer(CLAVE_ESTADISTICAS));
     const pct = est.jugadas ? Math.round(100 * est.ganadas / est.jugadas) : 0;
-    const datos = [[est.jugadas, "Jugadas"], [pct, "% victorias"], [L.rachaVigente(est, HOY), "Racha actual"], [est.mejorRacha, "Mejor racha"]];
+    const datos = [[est.jugadas, "Jugadas"], [pct, "% victorias"], [L.rachaVigente(est, HOY), "Victorias seguidas"], [est.mejorRacha, "Mejor serie"]];
     $("stat-grid").replaceChildren(...datos.map(([v, t]) => { const d = el("div"); d.append(el("b", null, v), el("span", null, t)); return d; }));
     const max = Math.max(1, ...est.distribucion);
     const actual = S && S.estado === "won" ? S.filas.length : 0;
@@ -366,8 +491,6 @@
       r.append(el("span", null, i + 1), bar);
       return r;
     }));
-    const d = $("stats");
-    if (!d.open) { if (d.showModal) d.showModal(); else d.setAttribute("open", ""); }
   }
 
   // ---------- cuenta atrás y cambio de día ----------

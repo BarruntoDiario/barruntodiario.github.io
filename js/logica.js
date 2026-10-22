@@ -104,9 +104,24 @@
     return est.ultimaVictoria >= desplazarFecha(hoy, -1) ? est.racha : 0;
   }
 
+  // Racha de la llama: días seguidos jugando la partida de su día. Solo cuentan los días con partida
+  // programada, así que un día sin partida no la rompe; si hoy aún no se ha jugado, sigue viva desde ayer.
+  function rachaDias(jugados, fechas, hoy) {
+    const dias = fechas.filter(f => f <= hoy).sort().reverse();
+    if (dias[0] === hoy && !jugados[hoy]) dias.shift();
+    let n = 0;
+    while (n < dias.length && jugados[dias[n]]) n++;
+    return n;
+  }
+  function mejorRachaDias(jugados, fechas, hoy) {
+    let mejor = 0, n = 0;
+    fechas.filter(f => f <= hoy).sort().forEach(f => { n = jugados[f] ? n + 1 : 0; mejor = Math.max(mejor, n); });
+    return mejor;
+  }
+
   const api = {
     FILAS, LETRAS, normalizar, puntuar, escribirEnCasilla, borrarEnCasilla, fechaLocal, desplazarFecha, elegirPartida,
-    textoCompartir, estadisticasVacias, registrarResultado, rachaVigente,
+    textoCompartir, estadisticasVacias, registrarResultado, rachaVigente, rachaDias, mejorRachaDias,
   };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else raiz.BarruntoLogica = api;

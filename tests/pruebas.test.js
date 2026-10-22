@@ -72,6 +72,16 @@ test("estadísticas y rachas", () => {
   assert.deepEqual([e.jugadas, e.racha, e.mejorRacha], [4, 0, 2]);
 });
 
+test("racha de la llama: días seguidos jugados en su día", () => {
+  const fechas = ["2026-10-23", "2026-10-24", "2026-10-25", "2026-10-27", "2026-10-28"]; // sin partida el 26
+  const j = { "2026-10-23": 1, "2026-10-24": 1, "2026-10-25": 1, "2026-10-27": 1 };
+  assert.equal(L.rachaDias(j, fechas, "2026-10-27"), 4);   // el 26 no tenía partida: no la rompe
+  assert.equal(L.rachaDias(j, fechas, "2026-10-28"), 4);   // hoy aún sin jugar: sigue viva
+  assert.equal(L.rachaDias(j, fechas, "2026-10-29"), 0);   // el 28 se saltó
+  assert.equal(L.rachaDias({}, fechas, "2026-10-23"), 0);
+  assert.equal(L.mejorRachaDias({ "2026-10-23": 1, "2026-10-25": 1, "2026-10-27": 1 }, fechas, "2026-10-28"), 2);
+});
+
 test("todas las partidas del JSON son válidas", () => {
   const datos = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "barrunto-partidas.json"), "utf8"));
   const fechas = new Set(), numeros = new Set();
