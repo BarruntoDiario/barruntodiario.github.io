@@ -311,6 +311,750 @@
           "respuesta": "ANCHO"
         }
       ]
+    },
+    {
+      "numero": 11,
+      "fecha": "2026-11-02",
+      "palabra": "BARCO",
+      "definiciones": [
+        {
+          "pista": "Miembro del cuerpo que va del hombro a la mano",
+          "respuesta": "BRAZO"
+        },
+        {
+          "pista": "Rumiante con cuernos que trepa por las rocas",
+          "respuesta": "CABRA"
+        },
+        {
+          "pista": "Árbol de madera dura que da bellotas",
+          "respuesta": "ROBLE"
+        },
+        {
+          "pista": "Esqueleto calizo de animalitos marinos que forma arrecifes",
+          "respuesta": "CORAL"
+        },
+        {
+          "pista": "Persona que sabe mucho",
+          "respuesta": "SABIO"
+        },
+        {
+          "pista": "Puesta del sol",
+          "respuesta": "OCASO"
+        }
+      ]
+    },
+    {
+      "numero": 12,
+      "fecha": "2026-11-03",
+      "palabra": "SILLA",
+      "definiciones": [
+        {
+          "pista": "Mezcla líquida que acompaña a una comida",
+          "respuesta": "SALSA"
+        },
+        {
+          "pista": "Inteligente, despierto",
+          "respuesta": "LISTO"
+        },
+        {
+          "pista": "Vía de una ciudad entre dos filas de casas",
+          "respuesta": "CALLE"
+        },
+        {
+          "pista": "Protección que un país da a un perseguido",
+          "respuesta": "ASILO"
+        },
+        {
+          "pista": "Indicio que ayuda a averiguar algo",
+          "respuesta": "PISTA"
+        },
+        {
+          "pista": "Herida abierta en la piel",
+          "respuesta": "LLAGA"
+        }
+      ]
+    },
+    {
+      "numero": 13,
+      "fecha": "2026-11-04",
+      "palabra": "MANTA",
+      "definiciones": [
+        {
+          "pista": "Parte posterior del pie",
+          "respuesta": "TALÓN"
+        },
+        {
+          "pista": "Libro de mapas",
+          "respuesta": "ATLAS"
+        },
+        {
+          "pista": "Órgano del olfato, en medio de la cara",
+          "respuesta": "NARIZ"
+        },
+        {
+          "pista": "Tren subterráneo de la ciudad",
+          "respuesta": "METRO"
+        },
+        {
+          "pista": "Plano inclinado para subir o bajar",
+          "respuesta": "RAMPA"
+        },
+        {
+          "pista": "Líquido de color para escribir",
+          "respuesta": "TINTA"
+        }
+      ]
+    },
+    {
+      "numero": 14,
+      "fecha": "2026-11-05",
+      "palabra": "HIELO",
+      "definiciones": [
+        {
+          "pista": "Casa en la que se vive",
+          "respuesta": "HOGAR"
+        },
+        {
+          "pista": "Hojas impresas y encuadernadas",
+          "respuesta": "LIBRO"
+        },
+        {
+          "pista": "Animal que da la lana",
+          "respuesta": "OVEJA"
+        },
+        {
+          "pista": "Que no ve bien de lejos",
+          "respuesta": "MIOPE"
+        },
+        {
+          "pista": "Aceituna",
+          "respuesta": "OLIVA"
+        },
+        {
+          "pista": "Persona admirada por sus hazañas",
+          "respuesta": "HÉROE"
+        }
+      ]
+    },
+    {
+      "numero": 15,
+      "fecha": "2026-11-06",
+      "palabra": "QUESO",
+      "definiciones": [
+        {
+          "pista": "Expresión de disgusto o protesta",
+          "respuesta": "QUEJA"
+        },
+        {
+          "pista": "Actividad de capturar peces",
+          "respuesta": "PESCA"
+        },
+        {
+          "pista": "Escultura de la cabeza y los hombros",
+          "respuesta": "BUSTO"
+        },
+        {
+          "pista": "Pieza circular que gira sobre un eje",
+          "respuesta": "RUEDA"
+        },
+        {
+          "pista": "Arbusto que da rosas",
+          "respuesta": "ROSAL"
+        },
+        {
+          "pista": "Molusco que puede guardar una perla",
+          "respuesta": "OSTRA"
+        }
+      ]
+    },
+    {
+      "numero": 16,
+      "fecha": "2026-11-07",
+      "palabra": "CEBRA",
+      "definiciones": [
+        {
+          "pista": "Valla que rodea un terreno",
+          "respuesta": "CERCA"
+        },
+        {
+          "pista": "Personaje de cuento con escoba y sombrero puntiagudo",
+          "respuesta": "BRUJA"
+        },
+        {
+          "pista": "Planta de tronco leñoso y ramas",
+          "respuesta": "ÁRBOL"
+        },
+        {
+          "pista": "Hilo fino de un tejido",
+          "respuesta": "FIBRA"
+        },
+        {
+          "pista": "Alimento que se obtiene de los animales",
+          "respuesta": "CARNE"
+        },
+        {
+          "pista": "Cordón que arde en una vela",
+          "respuesta": "MECHA"
+        }
+      ]
+    },
+    {
+      "numero": 17,
+      "fecha": "2026-11-08",
+      "palabra": "PIANO",
+      "definiciones": [
+        {
+          "pista": "Bosque de pinos",
+          "respuesta": "PINAR"
+        },
+        {
+          "pista": "Mujer que se va a casar o acaba de casarse",
+          "respuesta": "NOVIA"
+        },
+        {
+          "pista": "Que no deja pasar la luz",
+          "respuesta": "OPACO"
+        },
+        {
+          "pista": "Aparato para escuchar emisoras",
+          "respuesta": "RADIO"
+        },
+        {
+          "pista": "Pieza que cierra una botella",
+          "respuesta": "TAPÓN"
+        },
+        {
+          "pista": "Religiosa que vive en un convento",
+          "respuesta": "MONJA"
+        }
+      ]
+    },
+    {
+      "numero": 18,
+      "fecha": "2026-11-09",
+      "palabra": "FRESA",
+      "definiciones": [
+        {
+          "pista": "Prenda que cuelga desde la cintura",
+          "respuesta": "FALDA"
+        },
+        {
+          "pista": "Persona que está en la cárcel",
+          "respuesta": "PRESO"
+        },
+        {
+          "pista": "Ficción de televisión dividida en capítulos",
+          "respuesta": "SERIE"
+        },
+        {
+          "pista": "Granos menudos que cubren la playa",
+          "respuesta": "ARENA"
+        },
+        {
+          "pista": "Arma de fuego de cañón largo",
+          "respuesta": "FUSIL"
+        },
+        {
+          "pista": "Protección rígida para la cabeza",
+          "respuesta": "CASCO"
+        }
+      ]
+    },
+    {
+      "numero": 19,
+      "fecha": "2026-11-10",
+      "palabra": "TECHO",
+      "definiciones": [
+        {
+          "pista": "Pieza que se pulsa en un piano o un ordenador",
+          "respuesta": "TECLA"
+        },
+        {
+          "pista": "Establecimiento para alojarse de viaje",
+          "respuesta": "HOTEL"
+        },
+        {
+          "pista": "Cabaña pobre de ramas o barro",
+          "respuesta": "CHOZA"
+        },
+        {
+          "pista": "Punto cardinal por donde se pone el sol",
+          "respuesta": "OESTE"
+        },
+        {
+          "pista": "Chorro de agua para lavarse de pie",
+          "respuesta": "DUCHA"
+        },
+        {
+          "pista": "Herida hecha con algo afilado",
+          "respuesta": "CORTE"
+        }
+      ]
+    },
+    {
+      "numero": 20,
+      "fecha": "2026-11-11",
+      "palabra": "DEDAL",
+      "definiciones": [
+        {
+          "pista": "Desembocadura de un río en forma de triángulo",
+          "respuesta": "DELTA"
+        },
+        {
+          "pista": "Moverse en el agua sin tocar el fondo",
+          "respuesta": "NADAR"
+        },
+        {
+          "pista": "Combate entre dos personas",
+          "respuesta": "DUELO"
+        },
+        {
+          "pista": "Estado del que no está enfermo",
+          "respuesta": "SALUD"
+        },
+        {
+          "pista": "Pueblo pequeño",
+          "respuesta": "ALDEA"
+        },
+        {
+          "pista": "Líquido que queda al cocer alimentos",
+          "respuesta": "CALDO"
+        }
+      ]
+    },
+    {
+      "numero": 21,
+      "fecha": "2026-11-12",
+      "palabra": "DUEÑO",
+      "definiciones": [
+        {
+          "pista": "Etapa de la vida en que se es niño",
+          "respuesta": "NIÑEZ"
+        },
+        {
+          "pista": "Que sabe a azúcar",
+          "respuesta": "DULCE"
+        },
+        {
+          "pista": "Sensación de daño o sufrimiento",
+          "respuesta": "DOLOR"
+        },
+        {
+          "pista": "La Tierra y todo lo que hay en ella",
+          "respuesta": "MUNDO"
+        },
+        {
+          "pista": "Monte de roca, como el de Gibraltar",
+          "respuesta": "PEÑÓN"
+        },
+        {
+          "pista": "Redondel de la plaza de toros",
+          "respuesta": "RUEDO"
+        }
+      ]
+    },
+    {
+      "numero": 22,
+      "fecha": "2026-11-13",
+      "palabra": "JAULA",
+      "definiciones": [
+        {
+          "pista": "Divertirse con un juego",
+          "respuesta": "JUGAR"
+        },
+        {
+          "pista": "Recipiente con asa para servir líquidos",
+          "respuesta": "JARRA"
+        },
+        {
+          "pista": "Interrupción breve",
+          "respuesta": "PAUSA"
+        },
+        {
+          "pista": "Pelota grande",
+          "respuesta": "BALÓN"
+        },
+        {
+          "pista": "Pelea, combate",
+          "respuesta": "LUCHA"
+        },
+        {
+          "pista": "Arma larga terminada en punta",
+          "respuesta": "LANZA"
+        }
+      ]
+    },
+    {
+      "numero": 23,
+      "fecha": "2026-11-14",
+      "palabra": "MOTOR",
+      "definiciones": [
+        {
+          "pista": "Capacidad de hacer reír o de ver el lado gracioso",
+          "respuesta": "HUMOR"
+        },
+        {
+          "pista": "Tronco del cuerpo humano",
+          "respuesta": "TORSO"
+        },
+        {
+          "pista": "Animal marino con grandes colmillos",
+          "respuesta": "MORSA"
+        },
+        {
+          "pista": "Máquina que hace tareas humanas",
+          "respuesta": "ROBOT"
+        },
+        {
+          "pista": "Hierro, cobre u oro, por ejemplo",
+          "respuesta": "METAL"
+        },
+        {
+          "pista": "Círculo de personas",
+          "respuesta": "CORRO"
+        }
+      ]
+    },
+    {
+      "numero": 24,
+      "fecha": "2026-11-15",
+      "palabra": "TRAJE",
+      "definiciones": [
+        {
+          "pista": "Hacer punto con agujas",
+          "respuesta": "TEJER"
+        },
+        {
+          "pista": "Hueco de un mueble que se saca tirando de él",
+          "respuesta": "CAJÓN"
+        },
+        {
+          "pista": "Pastel grande",
+          "respuesta": "TARTA"
+        },
+        {
+          "pista": "Conjunto de palabras con sentido",
+          "respuesta": "FRASE"
+        },
+        {
+          "pista": "Que pertenece a otro",
+          "respuesta": "AJENO"
+        },
+        {
+          "pista": "Engaño hábil, como el de un mago",
+          "respuesta": "TRUCO"
+        }
+      ]
+    },
+    {
+      "numero": 25,
+      "fecha": "2026-11-16",
+      "palabra": "CISNE",
+      "definiciones": [
+        {
+          "pista": "Tira larga y estrecha de tela",
+          "respuesta": "CINTA"
+        },
+        {
+          "pista": "Señal que representa algo",
+          "respuesta": "SIGNO"
+        },
+        {
+          "pista": "Quien obtiene información secreta",
+          "respuesta": "ESPÍA"
+        },
+        {
+          "pista": "Felino de orejas puntiagudas, como el ibérico",
+          "respuesta": "LINCE"
+        },
+        {
+          "pista": "Lugar donde se exponen obras de arte",
+          "respuesta": "MUSEO"
+        },
+        {
+          "pista": "Círculo plano, como el de vinilo",
+          "respuesta": "DISCO"
+        }
+      ]
+    },
+    {
+      "numero": 26,
+      "fecha": "2026-11-17",
+      "palabra": "RELOJ",
+      "definiciones": [
+        {
+          "pista": "Órgano del oído",
+          "respuesta": "OREJA"
+        },
+        {
+          "pista": "Persona de poca edad",
+          "respuesta": "JOVEN"
+        },
+        {
+          "pista": "El rojo o el azul, por ejemplo",
+          "respuesta": "COLOR"
+        },
+        {
+          "pista": "Animal doméstico que ladra",
+          "respuesta": "PERRO"
+        },
+        {
+          "pista": "Cosa enrollada en forma de cilindro",
+          "respuesta": "ROLLO"
+        },
+        {
+          "pista": "Actividad para divertirse",
+          "respuesta": "JUEGO"
+        }
+      ]
+    },
+    {
+      "numero": 27,
+      "fecha": "2026-11-18",
+      "palabra": "SELVA",
+      "definiciones": [
+        {
+          "pista": "Cavidad natural en la roca",
+          "respuesta": "CUEVA"
+        },
+        {
+          "pista": "Parte del zapato que toca el suelo",
+          "respuesta": "SUELA"
+        },
+        {
+          "pista": "Llanura entre montañas",
+          "respuesta": "VALLE"
+        },
+        {
+          "pista": "Estampilla que se pega en una carta",
+          "respuesta": "SELLO"
+        },
+        {
+          "pista": "Línea de un poema",
+          "respuesta": "VERSO"
+        },
+        {
+          "pista": "Embarcación hecha de troncos",
+          "respuesta": "BALSA"
+        }
+      ]
+    },
+    {
+      "numero": 28,
+      "fecha": "2026-11-19",
+      "palabra": "CAMPO",
+      "definiciones": [
+        {
+          "pista": "Historieta en viñetas",
+          "respuesta": "CÓMIC"
+        },
+        {
+          "pista": "Obra en verso",
+          "respuesta": "POEMA"
+        },
+        {
+          "pista": "Espacio abierto en una ciudad",
+          "respuesta": "PLAZA"
+        },
+        {
+          "pista": "Malestar en el que parece que todo da vueltas",
+          "respuesta": "MAREO"
+        },
+        {
+          "pista": "Canción popular española",
+          "respuesta": "COPLA"
+        },
+        {
+          "pista": "Tela decorada que se cuelga en la pared",
+          "respuesta": "TAPIZ"
+        }
+      ]
+    },
+    {
+      "numero": 29,
+      "fecha": "2026-11-20",
+      "palabra": "ZORRO",
+      "definiciones": [
+        {
+          "pista": "Que usa mejor la mano izquierda",
+          "respuesta": "ZURDO"
+        },
+        {
+          "pista": "Gotas de agua que aparecen al amanecer",
+          "respuesta": "ROCÍO"
+        },
+        {
+          "pista": "Cereal de la paella",
+          "respuesta": "ARROZ"
+        },
+        {
+          "pista": "Pan o dulce en forma de anillo",
+          "respuesta": "ROSCA"
+        },
+        {
+          "pista": "Obstinado, que no cede",
+          "respuesta": "TERCO"
+        },
+        {
+          "pista": "Aparato para asar y hornear",
+          "respuesta": "HORNO"
+        }
+      ]
+    },
+    {
+      "numero": 30,
+      "fecha": "2026-11-21",
+      "palabra": "BAILE",
+      "definiciones": [
+        {
+          "pista": "Cuarto mes del año",
+          "respuesta": "ABRIL"
+        },
+        {
+          "pista": "Pieza plana de madera",
+          "respuesta": "TABLA"
+        },
+        {
+          "pista": "Desplazamiento de un lugar a otro",
+          "respuesta": "VIAJE"
+        },
+        {
+          "pista": "Que no está preso ni atado",
+          "respuesta": "LIBRE"
+        },
+        {
+          "pista": "Hilo metálico que conduce la electricidad",
+          "respuesta": "CABLE"
+        },
+        {
+          "pista": "Habitación de una cárcel",
+          "respuesta": "CELDA"
+        }
+      ]
+    },
+    {
+      "numero": 31,
+      "fecha": "2026-11-22",
+      "palabra": "DIOSA",
+      "definiciones": [
+        {
+          "pista": "Cantidad de medicina que se toma de una vez",
+          "respuesta": "DOSIS"
+        },
+        {
+          "pista": "Insecto que vive en el pelo",
+          "respuesta": "PIOJO"
+        },
+        {
+          "pista": "Habitación principal de la casa",
+          "respuesta": "SALÓN"
+        },
+        {
+          "pista": "Advertencia",
+          "respuesta": "AVISO"
+        },
+        {
+          "pista": "Baile",
+          "respuesta": "DANZA"
+        },
+        {
+          "pista": "Bebida alcohólica de manzana",
+          "respuesta": "SIDRA"
+        }
+      ]
+    },
+    {
+      "numero": 32,
+      "fecha": "2026-11-23",
+      "palabra": "FAROL",
+      "definiciones": [
+        {
+          "pista": "Conjunto de barcos",
+          "respuesta": "FLOTA"
+        },
+        {
+          "pista": "Terreno donde se puede construir",
+          "respuesta": "SOLAR"
+        },
+        {
+          "pista": "Figura exterior de algo",
+          "respuesta": "FORMA"
+        },
+        {
+          "pista": "Fusil de cañón rayado",
+          "respuesta": "RIFLE"
+        },
+        {
+          "pista": "Muro que separa habitaciones",
+          "respuesta": "PARED"
+        },
+        {
+          "pista": "Entrante del mar en la tierra",
+          "respuesta": "GOLFO"
+        }
+      ]
+    },
+    {
+      "numero": 33,
+      "fecha": "2026-11-24",
+      "palabra": "BRUMA",
+      "definiciones": [
+        {
+          "pista": "Caja donde se echan las cartas",
+          "respuesta": "BUZÓN"
+        },
+        {
+          "pista": "Hija del tío o de la tía",
+          "respuesta": "PRIMA"
+        },
+        {
+          "pista": "Resina fósil de color amarillento",
+          "respuesta": "ÁMBAR"
+        },
+        {
+          "pista": "De pelo claro, del color del oro",
+          "respuesta": "RUBIO"
+        },
+        {
+          "pista": "Sanción económica",
+          "respuesta": "MULTA"
+        },
+        {
+          "pista": "Uso excesivo o injusto",
+          "respuesta": "ABUSO"
+        }
+      ]
+    },
+    {
+      "numero": 34,
+      "fecha": "2026-11-25",
+      "palabra": "PATIO",
+      "definiciones": [
+        {
+          "pista": "Persona que escribe versos",
+          "respuesta": "POETA"
+        },
+        {
+          "pista": "Partícula más pequeña de un elemento",
+          "respuesta": "ÁTOMO"
+        },
+        {
+          "pista": "Muro que cerca un terreno",
+          "respuesta": "TAPIA"
+        },
+        {
+          "pista": "Hierba que come el ganado",
+          "respuesta": "PASTO"
+        },
+        {
+          "pista": "Pieza para dirigir un barco",
+          "respuesta": "TIMÓN"
+        },
+        {
+          "pista": "Reproducción de un original",
+          "respuesta": "COPIA"
+        }
+      ]
     }
   ]
 }
